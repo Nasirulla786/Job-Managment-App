@@ -1,0 +1,146 @@
+//@ts-nocheck
+'use client'
+
+import { useContext, useState } from "react"
+import { Job } from "../../../../generated/prisma"
+import { UserContex } from "../layout"
+
+export default function Page() {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
+  const [salary, setSalary] = useState('')
+  const [employment_type, setEmployment_type] = useState('')
+  const [job_type, setJob_type] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const { user } = useContext(UserContex)
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setLoading(true)
+    const sal = Number.parseInt(salary)
+
+    //@ts-ignore
+    const data: Job = {
+      title,
+      description,
+      location,
+      salary: sal,
+      employment_type,
+      job_type,
+      company_id: user.company.id
+    }
+
+    const res = await fetch("http://localhost:3000/api/job", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+
+    if (res.ok) {
+      alert("Job created successfully.")
+      setTitle('')
+      setDescription('')
+      setLocation('')
+      setSalary('')
+      setEmployment_type('')
+      setJob_type('')
+    }
+
+    setLoading(false)
+  }
+
+  return (
+    <div className="w-full min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-400 dark:from-blue-900 dark:via-blue-950 dark:to-blue-900 flex items-center justify-center py-10">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-lg bg-white/80 dark:bg-blue-950/80 backdrop-blur-md rounded-2xl p-10 shadow-2xl text-blue-900 dark:text-blue-100 space-y-7 border border-blue-200 dark:border-blue-800"
+      >
+        <h2 className="text-3xl font-bold text-center text-blue-700 dark:text-blue-300 mb-6 drop-shadow">Add New Job</h2>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Job Title</label>
+          <input
+            type="text"
+            placeholder="Enter job title"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Job Description</label>
+          <textarea
+            placeholder="Enter job description"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Location</label>
+          <input
+            type="text"
+            placeholder="e.g. Delhi, Mumbai"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Salary (₹)</label>
+          <input
+            type="number"
+            placeholder="e.g. 50000"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={salary}
+            onChange={(e) => setSalary(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Employment Type</label>
+          <input
+            type="text"
+            placeholder="e.g. Full-time / Part-time"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={employment_type}
+            onChange={(e) => setEmployment_type(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-blue-800 dark:text-blue-200">Job Type</label>
+          <input
+            type="text"
+            placeholder="e.g. Remote / Onsite"
+            className="w-full p-3 rounded-lg bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600 text-blue-900 dark:text-blue-100"
+            value={job_type}
+            onChange={(e) => setJob_type(e.target.value)}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className={`w-full p-3 rounded-lg font-semibold text-lg transition duration-300 shadow ${
+            loading
+              ? 'bg-blue-300 dark:bg-blue-700 cursor-not-allowed text-blue-100'
+              : 'bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 dark:from-blue-500 dark:to-blue-700 text-white'
+          }`}
+        >
+          {loading ? "Creating Job..." : "Add Job"}
+        </button>
+      </form>
+    </div>
+  )
+}

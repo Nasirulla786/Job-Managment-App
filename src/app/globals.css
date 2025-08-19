@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+
+@import "@radix-ui/themes/styles.css";
+
+
+
+.rt-Card {
+  --card-background-color:rgb(2, 2, 59) !important;
+  --card-border-width: 0px !important;
+  background-color: blue !important
+}
+
+
+body,html{
+    background-color: rgb(43, 63, 193);
+    color:white;
+    overflow-x: hidden;
+}
