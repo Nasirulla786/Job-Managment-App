@@ -46,7 +46,7 @@ export default async function Home() {
             className="flex items-center justify-center flex-col"
           >
 
-              <JobCard key={idx} job={value} data={data} />
+              <JobCard key={idx} job={value} checkSearch={data} />
 
           </div>
         ))}
