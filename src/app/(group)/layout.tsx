@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 'use client'
 import NavBar from "@/components/NavBar";
 import prismaClient from "@/services/primsa ";
@@ -6,9 +6,9 @@ import prismaClient from "@/services/primsa ";
 import { createContext, useEffect, useState } from "react";
 
 
-export const UserContex = createContext();
+export const UserContex:any = createContext(null);
 
-export default  function Layout({ children }) {
+export default  function Layout({ children }:{children:any}) {
 
     // const cooki = await cookies();
     // const email = decodeURIComponent(cooki.get("token")?.value || "")

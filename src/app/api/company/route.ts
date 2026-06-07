@@ -1,13 +1,13 @@
-//@ts-nocheck
+
 
 import { getuserFromCookies } from "@/app/helper/helper";
 import prismaClient from "@/services/primsa ";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
 
-export async function POST(req){
+export async function POST(req:NextRequest){
     const body = await req.json();
 
      const user = await getuserFromCookies();

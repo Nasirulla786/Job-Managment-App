@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import prismaClient from "@/services/primsa ";
 
 export default async function Page() {

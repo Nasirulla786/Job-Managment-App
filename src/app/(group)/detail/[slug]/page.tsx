@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -6,11 +6,17 @@ import { notFound } from 'next/navigation'
 import EditDelete from '@/components/edit-delete'
 import ApplyJob from '@/components/ApplyJob'
 import ViewJobs from '@/components/viewJobButton'
+export type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-const page = async ({ params }) => {
+
+const page = async ({ params}: PageProps) => {
 
 
-  const { slug } = params
+  const { slug }:any = params
   const reesponse = await fetch("http://localhost:3000/api/job/" + slug)
   const data = await reesponse.json()
 
@@ -87,7 +93,7 @@ const page = async ({ params }) => {
             {<ApplyJob job={res} apply = {isApplied} />}
             <ViewJobs job={res} />
           </div>
-          {res.apply_options?.slice(1).map((opt, i) => (
+          {res.apply_options?.slice(1).map((opt:any, i:any) => (
             <Link
               key={i}
               href={opt.apply_link}

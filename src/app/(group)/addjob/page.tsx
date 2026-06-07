@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 'use client'
 
 import { useContext, useState } from "react"
@@ -14,9 +14,9 @@ export default function Page() {
   const [job_type, setJob_type] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const { user } = useContext(UserContex)
+  const { user }:any = useContext(UserContex)
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e:any) {
     e.preventDefault()
     setLoading(true)
     const sal = Number.parseInt(salary)
@@ -29,6 +29,7 @@ export default function Page() {
       salary: sal,
       employment_type,
       job_type,
+        //@ts-ignore
       company_id: user.company.id
     }
 

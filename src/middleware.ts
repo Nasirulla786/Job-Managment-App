@@ -1,7 +1,7 @@
-//@ts-nocheck
-import { NextResponse } from "next/server";
 
-export default function  middleware(req){
+import { NextRequest, NextResponse } from "next/server";
+
+export default function  middleware(req:NextRequest){
      const user = req.cookies.get("token")?.value;
      const pathName = req.nextUrl.pathname;
 

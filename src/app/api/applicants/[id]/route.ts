@@ -1,8 +1,8 @@
-//@ts-nocheck
+
 import prismaClient from "@/services/primsa "
 import { NextResponse } from "next/server"
 
-export async function GET (req,{params}){
+export async function GET (req:any,{params}:{params:any}){
 
     const job_id = params.id
 

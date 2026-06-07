@@ -1,10 +1,11 @@
-//@ts-nocheck
+
 import DeleteCompanyButton from "@/components/DeleteCompanyButton";
 import JobCard from "@/components/JobCard";
 import ReviewButton from "@/components/ReviewContent";
+import { PageProps } from "../../detail/[slug]/page";
 
-export default async function Page({ params }) {
-  const { id } = await params;
+export default async function Page({ params }:PageProps) {
+  const { id }:any = await params;
 
   const res = await fetch("http://localhost:3000/api/mycompany/" + id);
   const data = await res.json();
@@ -16,7 +17,7 @@ export default async function Page({ params }) {
 
   const initials = company.companyName
     .split(" ")
-    .map((w) => w[0])
+    .map((w:any) => w[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();

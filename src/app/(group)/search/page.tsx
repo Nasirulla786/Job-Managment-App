@@ -1,9 +1,10 @@
-//@ts-nocheck
+
 import React from 'react'
 import SearchJobCard from '@/components/SearchjobCard'
 import Sidebar from '@/components/Sidebar'
+import { PageProps } from '../detail/[slug]/page'
 
-const page = async ({ searchParams }) => {
+const page = async ({ searchParams } :{searchParams:any}) => {
   const params = searchParams.q
   const min = searchParams.min
 
@@ -35,7 +36,7 @@ const page = async ({ searchParams }) => {
 
         {jobs?.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {jobs.map((value, idx) => (
+            {jobs.map((value:any, idx:any) => (
               <SearchJobCard key={idx} job={value} />
             ))}
           </div>
