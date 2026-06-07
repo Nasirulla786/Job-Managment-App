@@ -8,7 +8,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const UserContex = createContext();
 
-export default  function layout({ children }) {
+export default  function Layout({ children }) {
 
     // const cooki = await cookies();
     // const email = decodeURIComponent(cooki.get("token")?.value || "")

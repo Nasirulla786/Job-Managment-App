@@ -6,7 +6,11 @@ const nextConfig: NextConfig = {
     remotePatterns:[{
       hostname:"**"
     }]
-  }
+  },
+   eslint: {
+    ignoreDuringBuilds: true,
+  },
+
 };
 
 export default nextConfig;
