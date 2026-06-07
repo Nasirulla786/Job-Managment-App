@@ -6,11 +6,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
 
-  // const user = await getuserFromCookies();
+
   const body = await req.json();
 
 
-  // console.log("thisis body",body)
+  console.log("thisis body",body)
 
   // const dataToSave = {
   //     ...body,

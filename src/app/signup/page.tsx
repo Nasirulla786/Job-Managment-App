@@ -15,7 +15,7 @@ export default function page() {
     const [showError, setShowError] = useState('');
     const router = useRouter();
 
-    
+
 
     async function handlesubmit(e){
         e.preventDefault();
@@ -32,8 +32,10 @@ export default function page() {
           body:JSON.stringify(user)
         })
 
-        if(res.success){
-          alert("Sign UP successfll")
+
+
+        if(res.status==201){
+          alert("Sign UP successfull")
           router.push("/")
 
         }

@@ -35,7 +35,7 @@ export default function ReviewButton({ company, reviews }) {
   return (
     <Tabs.Root defaultValue="jobs">
       {/* Tab Buttons */}
-    <Tabs.List className="mb-10 flex justify-center gap-4 text-white">
+<Tabs.List className="mb-10 flex justify-center gap-4">
   {[
     { label: "Listed Jobs", value: "jobs" },
     { label: "Add Review", value: "addReview" },
@@ -44,14 +44,15 @@ export default function ReviewButton({ company, reviews }) {
     <Tabs.Trigger
       key={tab.value}
       value={tab.value}
-      className="px-6 py-2 text-sm font-semibold bg-blue-800 text-sky-300 rounded-md
-                 data-[state=active]:bg-sky-400 data-[state=active]:text-blue-900
+      className="px-6 py-2 text-sm font-semibold bg-sky-600 text-white rounded-md z-10
+                 data-[state=active]:bg-sky-400 data-[state=active]:text-white
                  hover:bg-blue-700 hover:text-white transition shadow"
     >
       {tab.label}
     </Tabs.Trigger>
   ))}
 </Tabs.List>
+
 
       <Box>
         {/* ✅ JOB LISTING */}

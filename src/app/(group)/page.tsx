@@ -25,6 +25,7 @@ export default async function Home() {
   const res = data.data;
 
   if(res.length==0){
+    // console.log("dfhsdjkhsjkhfd",res);
      notFound()
 
   }
