@@ -1,5 +1,5 @@
 
-import prismaClient from "@/services/primsa "
+import prismaClient from "@/services/primsa"
 import { NextResponse } from "next/server"
 
 export async function GET (req:any,{params}:{params:any}){

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { GenerateToken } from "@/services/jsonwebtoken";
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 import { NextResponse } from "next/server";
 // import { cookies } from "next/headers";
 

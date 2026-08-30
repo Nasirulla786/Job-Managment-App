@@ -1,7 +1,7 @@
 
 
 import { getuserFromCookies } from "@/app/helper/helper";
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req:NextRequest) {

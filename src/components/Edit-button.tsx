@@ -2,6 +2,7 @@
 import { Button, Dialog } from '@radix-ui/themes'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const Editbutton = ({ job }) => {
     const [title, setTitle] = useState(job?.title)
@@ -31,18 +32,19 @@ const Editbutton = ({ job }) => {
             body: JSON.stringify(data),
         })
         if (res.ok) {
-            alert("Job updated successfully.")
+            toast.success("Job updated successfully! ✅")
             router.refresh();
+        } else {
+            toast.error("Failed to update job. Please try again.")
         }
         setLoading(false)
     }
 
     return (
         <Dialog.Root>
-            <Dialog.Trigger >
+            <Dialog.Trigger>
                 <Button color="blue" variant="solid" radius="full" size="3" style={{
                 cursor:"pointer"
-
             }}>
                     Edit Job
                 </Button>

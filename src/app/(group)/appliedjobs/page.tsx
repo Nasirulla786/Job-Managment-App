@@ -1,6 +1,6 @@
 
 import { getuserFromCookies } from "@/app/helper/helper"
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 
 export default async function Page() {
     const user = await getuserFromCookies();

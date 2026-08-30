@@ -1,5 +1,5 @@
 //@ts-nocheck
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 import { NextResponse } from "next/server";
 
 //@ts-nocheck

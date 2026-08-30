@@ -1,7 +1,7 @@
 
 'use client'
 import NavBar from "@/components/NavBar";
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 // import { cookies } from "next/headers";
 import { createContext, useEffect, useState } from "react";
 

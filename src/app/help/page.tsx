@@ -1,7 +1,7 @@
 //@ts-nocheck
 // 'use client'
 import data from "@/data"
-import prismaClient from "@/services/primsa "
+import prismaClient from "@/services/primsa"
 export default function Page() {
 
 

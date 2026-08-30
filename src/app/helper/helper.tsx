@@ -1,5 +1,5 @@
 import { VerifyToken } from "@/services/jsonwebtoken";
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

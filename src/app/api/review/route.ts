@@ -1,7 +1,7 @@
 //@ts-nocheck
 
 import { getuserFromCookies } from "@/app/helper/helper";
-import prismaClient from "@/services/primsa ";
+import prismaClient from "@/services/primsa";
 import { NextResponse } from "next/server";
 
 

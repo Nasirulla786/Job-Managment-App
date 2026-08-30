@@ -2,32 +2,27 @@
 'use client'
 import { Badge, Button, Dialog } from "@radix-ui/themes"
 import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
 
 export default function ViewJobs({ job }) {
 
-    // console.log("this is viewapply jons",job)
-
-
     const [applicants, setapplicants] = useState([])
-
-    // console.log("this is applicants", applicants)
-
 
     useEffect(() => {
 
         async function getApplicants() {
-            const res = await fetch("/api/applicants/" + job.id)
-            const data = await res.json();
+            try {
+                const res = await fetch("/api/applicants/" + job.id)
+                const data = await res.json();
 
-            // console.log("ths is server data", data)
-            if (data.success) {
-                setapplicants(data?.data)
+                if (data.success) {
+                    setapplicants(data?.data)
+                } else {
+                    toast.error("Could not load applicants.")
+                }
+            } catch (error) {
+                toast.error("Server error! Could not fetch applicants.")
             }
-
-            else {
-                alert("nothing")
-            }
-
         }
         getApplicants();
     }, [])
@@ -42,7 +37,7 @@ export default function ViewJobs({ job }) {
 
             <Dialog.Root>
                 <Dialog.Trigger>
-                    <Button>View Jobs Applicants</Button>
+                    <Button style={{ cursor: "pointer" }}>View Jobs Applicants</Button>
                 </Dialog.Trigger>
 
                 <Dialog.Content maxWidth="450px">

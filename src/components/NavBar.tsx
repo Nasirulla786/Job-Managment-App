@@ -133,7 +133,7 @@ const NavBar = () => {
 
             {/* Mobile Hamburger */}
             <button
-                className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
                 onClick={() => setMobileMenu(!mobileMenu)}
                 aria-label="Toggle menu"
             >
